@@ -1,7 +1,6 @@
 const canvas = document.getElementById('pong');
 const ctx = canvas.getContext('2d');
 
-// Game constants
 const PADDLE_WIDTH = 15;
 const PADDLE_HEIGHT = 100;
 const BALL_RADIUS = 10;
@@ -9,7 +8,6 @@ const AI_SPEED = 4;
 const PLAYER_X = 20;
 const AI_X = canvas.width - PADDLE_WIDTH - 20;
 
-// Game state
 let playerY = canvas.height / 2 - PADDLE_HEIGHT / 2;
 let aiY = canvas.height / 2 - PADDLE_HEIGHT / 2;
 let ball = {
@@ -42,18 +40,15 @@ function draw() {
   ctx.stroke();
   ctx.setLineDash([]);
 
-  // Draw paddles
   ctx.fillStyle = '#fff';
   ctx.fillRect(PLAYER_X, playerY, PADDLE_WIDTH, PADDLE_HEIGHT);
   ctx.fillRect(AI_X, aiY, PADDLE_WIDTH, PADDLE_HEIGHT);
 
-  // Draw ball
   ctx.beginPath();
   ctx.arc(ball.x, ball.y, BALL_RADIUS, 0, Math.PI * 2);
   ctx.fillStyle = '#73edfdff';
   ctx.fill();
 
-  // Draw scores
   ctx.font = '36px Arial';
   ctx.fillText(playerScore, canvas.width / 2 - 60, 50);
   ctx.fillText(aiScore, canvas.width / 2 + 30, 50);
@@ -127,5 +122,6 @@ function loop() {
   draw();
   requestAnimationFrame(loop);
 }
+
 
 loop();
